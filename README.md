@@ -14,6 +14,7 @@ heavy ML framework.
 - Atomic JSON model and configuration persistence
 - Training, indexing, scoring, batch scoring, inspection, and sample generation
 - Deterministic sample corpus, validation, diagnostics, and unit tests
+- 20+ realistic templates each for legitimate, suspicious, and fraud messages
 
 ## Install
 
@@ -129,3 +130,21 @@ The benchmark compares TRE-style retrieval, MutationGuard-lite rules, and the
 combined 55/45 detector. It reports accuracy, precision, recall, F1, average
 scoring latency, throughput, peak benchmark memory, false positives, and false
 negatives. Fraud and suspicious labels are both treated as positive outcomes.
+
+## Web interface
+
+Start the local browser interface:
+
+```bash
+python webapp/server.py
+```
+
+Open `http://127.0.0.1:8080/`.
+
+The web interface exposes single-message scoring, JSON/CSV/JSONL batch
+scoring, model training, sample generation, model inspection, and configuration
+creation and validation.
+
+Saved models are discovered automatically throughout the project directory.
+New models are saved under `web_data/`; existing model JSON files in the project
+root or subdirectories are also shown in the web model selectors.

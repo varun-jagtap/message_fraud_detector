@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Message Fraud Detector</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Fraud analysis workspace</p>
+        <h1>Message Fraud Detector</h1>
+      </div>
+      <span id="server-status" class="status"><span></span>Connecting</span>
+    </header>
+
+    <nav class="tabs" aria-label="Detector sections">
+      <button class="tab active" data-tab="score">Check message</button>
+      <button class="tab" data-tab="batch">Batch check</button>
+      <button class="tab" data-tab="train">Train model</button>
+      <button class="tab" data-tab="generate">Generate samples</button>
+      <button class="tab" data-tab="models">Models & config</button>
+    </nav>
+
+    <section id="score" class="panel active">
+      <div class="grid two">
+        <div class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">Single message</p>
+              <h2>Analyze message</h2>
+            </div>
+            <label class="model-picker">
+              Model
+              <select id="score-model"></select>
+            </label>
+          </div>
+          <label for="message-id">Message ID <span>optional</span></label>
+          <input id="message-id" type="text" placeholder="SMS-001">
+          <label for="message-text">Message text</label>
+          <textarea id="message-text" rows="9" placeholder="Paste the full message here..."></textarea>
+          <button id="score-button" class="primary">Check for fraud</button>
+        </div>
+        <div class="card result-card" id="score-result" aria-live="polite">
+          <p class="empty-title">No message checked</p>
+          <p class="muted">The score, risk level, and main reasons will appear here.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="batch" class="panel">
+      <div class="card">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">Multiple messages</p>
+            <h2>Batch check</h2>
+          </div>
+          <label class="model-picker">
+            Model
+            <select id="batch-model"></select>
+          </label>
+        </div>
+        <label for="batch-input">JSONL records</label>
+        <textarea id="batch-input" rows="12" placeholder='{"message_id":"m1","text":"URGENT verify password now"}&#10;{"message_id":"m2","text":"Your appointment is confirmed"}'></textarea>
+        <div class="actions">
+          <button id="batch-button" class="primary">Run batch check</button>
+          <button id="download-batch" class="secondary" disabled>Download JSON</button>
+        </div>
+        <div id="batch-result" class="table-wrap"></div>
+      </div>
+    </section>
+
+    <section id="train" class="panel">
+      <div class="card">
+        <p class="eyebrow">Create or replace index</p>
+        <h2>Train model</h2>
+        <div class="grid two">
+          <div>
+            <label for="train-name">Model name</label>
+            <input id="train-name" type="text" value="detector" placeholder="detector">
+          </div>
+          <div>
+            <label for="train-format">Input format</label>
+            <select id="train-format">
+              <option value="jsonl">JSONL</option>
+              <option value="csv">CSV</option>
+              <option value="json">JSON</option>
+            </select>
+          </div>
+        </div>
+        <label for="train-data">Training records</label>
+        <textarea id="train-data" rows="14" placeholder='{"text":"URGENT verify password now","label":"fraud"}&#10;{"text":"Your appointment is confirmed","label":"legitimate"}'></textarea>
+        <details class="advanced">
+          <summary>Advanced configuration</summary>
+          <div id="config-fields" class="grid three"></div>
+        </details>
+        <button id="train-button" class="primary">Train & save model</button>
+        <div id="train-result" class="notice"></div>
+      </div>
+    </section>
+
+    <section id="generate" class="panel">
+      <div class="grid two">
+        <div class="card">
+          <p class="eyebrow">Demo data</p>
+          <h2>Generate sample records</h2>
+          <div class="grid two">
+            <div>
+              <label for="generate-count">Count</label>
+              <input id="generate-count" type="number" min="1" max="100000" value="100">
+            </div>
+            <div>
+              <label for="generate-seed">Seed</label>
+              <input id="generate-seed" type="number" value="7">
+            </div>
+          </div>
+          <div class="actions">
+            <button id="generate-button" class="primary">Generate</button>
+            <button id="download-samples" class="secondary" disabled>Download JSONL</button>
+          </div>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Preview</p>
+          <h2>Generated records</h2>
+          <pre id="generate-preview" class="preview">No records generated.</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="models" class="panel">
+      <div class="grid two">
+        <div class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">Saved models</p>
+              <h2>Model inspector</h2>
+            </div>
+            <button id="refresh-models" class="icon-button" title="Refresh models">Refresh</button>
+          </div>
+          <label for="inspect-model">Model</label>
+          <select id="inspect-model"></select>
+          <button id="inspect-button" class="secondary">Inspect model</button>
+          <pre id="inspect-result" class="preview">Select a model.</pre>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Runtime settings</p>
+          <h2>Validate configuration</h2>
+          <textarea id="config-json" rows="16"></textarea>
+          <div class="actions">
+            <button id="validate-config" class="primary">Validate</button>
+            <button id="create-config" class="secondary">Save config</button>
+          </div>
+          <div id="config-result" class="notice"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

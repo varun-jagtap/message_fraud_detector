@@ -1,0 +1,16 @@
+{
+  "fraud_threshold": 0.48,
+  "lower_retrieve": true,
+  "max_features": 5000,
+  "model_version": "1.0",
+  "ngram_max": 2,
+  "ngram_min": 1,
+  "retrieval_min_score": 0.08,
+  "retrieval_weight": 0.55,
+  "rule_cap": 1.0,
+  "rule_weight": 0.45,
+  "strip_accents": true,
+  "sublinear_tf": true,
+  "suspicious_threshold": 0.28,
+  "top_k": 5
+}

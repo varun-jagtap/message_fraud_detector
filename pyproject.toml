@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "message-fraud-detector"
+version = "1.0.0"
+description = "TRE-style retrieval and MutationGuard-lite message fraud detector"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+frauddetector = "message_fraud_detector.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["message_fraud_detector*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

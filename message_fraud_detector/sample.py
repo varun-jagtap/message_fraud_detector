@@ -28,6 +28,8 @@ FRAUD_TEMPLATES = (
     "Income tax department notice: arrest warrant issued. Transfer money immediately to avoid legal action.",
     "Your mobile number won a lucky draw. Call this number and provide the OTP to claim your reward.",
     "Account closure pending. Send a signed cheque, PIN and net-banking password to prevent permanent closure.",
+    "Dear Patron, Thank you for choosing Cinepolis.Click https://bitly.me?i=1czfhmukpzs5v to view your e-Ticket -Cinepolis India Pvt Ltd"
+    "Your package couldn't be delivered. Pay a small redelivery fee to reschedule: https://bit.ly/tohw Impersonates couriers like USPS, FedEx, UPS, or Amazon to capture card details."
 )
 
 LEGITIMATE_TEMPLATES = (
@@ -45,13 +47,6 @@ LEGITIMATE_TEMPLATES = (
     "Dear Customer, your cheque number 004218 has been presented for clearing. -Bank of Maharashtra",
     "Your UPI payment of Rs.450 to Metro Stores was successful. UTR: 628194730112.",
     "Your electricity bill payment of Rs.1,240 was received on 05 Oct 2026. Thank you.",
-    "Your train ticket PNR 4819201556 is confirmed. Travel date: 22 Oct 2026.",
-    "Your flight booking to Delhi is confirmed. Booking reference: AI7K2P. Check-in opens 48 hours before departure.",
-    "Your order #OD45821 has been shipped and will arrive by Friday.",
-    "Your salary credit of Rs.68,500 has been processed to account ending ****1234.",
-    "Your insurance premium of Rs.3,250 is due on 28 Oct 2026. Pay through the official app.",
-    "Your school fee receipt for student ID STU2048 has been generated successfully.",
-    "Your parcel from CityBooks has been delivered. Thank you for shopping with us.",
 )
 
 SUSPICIOUS_TEMPLATES = (
@@ -66,15 +61,6 @@ SUSPICIOUS_TEMPLATES = (
     "A refund of Rs.799 is being processed. Check your merchant account for the final status.",
     "Your delivery address needs confirmation before dispatch. Use the official shopping application.",
     "A login was detected from a new device. Review your recent activity and change your password if needed.",
-    "Your reward points are nearing expiry. Review the offer in the official customer portal.",
-    "A subscription renewal is scheduled. Check the service application to manage your plan.",
-    "Your mobile recharge is pending. Verify the status in the official operator application.",
-    "A bank service update is available. Read the notice in your secure net-banking inbox.",
-    "Your train booking has a travel advisory. Check the railway application for updated details.",
-    "Your insurance policy requires a document review. Contact the insurer through its official website.",
-    "A payment link was generated for your order. Confirm the merchant name before paying.",
-    "Your account profile has incomplete information. Update it through the official branch or app.",
-    "A courier attempt was recorded. Check the tracking page using the official courier website.",
 )
 
 
